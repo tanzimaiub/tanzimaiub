@@ -8,7 +8,7 @@ RUN docker-php-ext-install mysqli
 RUN a2enmod rewrite
 
 # Copy application files
-COPY public/ /var/www/html/
+#COPY public/ /var/www/html/
 # COPY config.php /var/www/html/
 
 # Set environment variables
