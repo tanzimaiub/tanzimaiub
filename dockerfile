@@ -9,7 +9,7 @@ RUN a2enmod rewrite
 
 # Copy application files
 COPY public/ /var/www/html/
-COPY config.php /var/www/html/
+# COPY config.php /var/www/html/
 
 # Set environment variables
 ENV APACHE_DOCUMENT_ROOT /var/www/html
