@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Empty Marks Table</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: auto;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+      text-transform: capitalize;
+    }
+    caption {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="marks-route">
+    <table id="marks-table"></table>
+  </div>
+
+  <script>
+    const headers = [
+      "Mark",
+      "Justification For This Marking",
+      "Internal Route"
+    ];
+
+    const emptyData = [
+      {}, {}, {}  // 3 empty rows
+    ];
+
+    const table = d3.select("#marks-table");
+    table.append("caption").text("Marks Table");
+
+    const thead = table.append("thead").append("tr");
+    thead.selectAll("th")
+      .data(headers)
+      .enter()
+      .append("th")
+      .text(d => d);
+
+    const tbody = table.append("tbody");
+    const rows = tbody.selectAll("tr")
+      .data(emptyData)
+      .enter()
+      .append("tr");
+
+    // Create 3 empty cells per row
+    rows.selectAll("td")
+      .data(() => ["", "", ""])
+      .enter()
+      .append("td")
+      .text(d => d);
+  </script>
+
+</body>
+</html>
